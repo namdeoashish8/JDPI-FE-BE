@@ -1,21 +1,21 @@
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import Signup from './pages/Signup'
-import MainLayout from './layout/MainLayout'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
-import ScheduleMaintain from './pages/dashboardPages/ScheduleMaintain'
-import MarkAttendance from './pages/dashboardPages/MarkAttendance'
-import StaffManage from './pages/dashboardPages/StaffManage'
-import Maintenance from './pages/dashboardPages/Maintenance'
-import AttendanceReport from './pages/dashboardPages/AttendanceReport'
-import KitchenInvent from './pages/dashboardPages/KitchenInvent'
-import ExpenseReport from './pages/dashboardPages/ExpenseReport'
-import SalesReport from './pages/dashboardPages/SalesReport'
-import ViewAttendance from './pages/dashboardPages/ViewAttendance'
-import MachInvent from './pages/dashboardPages/MachInvent'
-import DailyExpenselog from './pages/dashboardPages/DailyExpenselog'
-import DailyDispatch from './pages/dashboardPages/DailyDispatch'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Signup from "./pages/Signup";
+import MainLayout from "./layout/MainLayout";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ScheduleMaintain from "./pages/dashboardPages/ScheduleMaintain";
+import MarkAttendance from "./pages/dashboardPages/MarkAttendance";
+import StaffManage from "./pages/dashboardPages/StaffManage";
+import Maintenance from "./pages/dashboardPages/Maintenance";
+import AttendanceReport from "./pages/dashboardPages/AttendanceReport";
+import KitchenInvent from "./pages/dashboardPages/KitchenInvent";
+import ExpenseReport from "./pages/dashboardPages/ExpenseReport";
+import SalesReport from "./pages/dashboardPages/SalesReport";
+import ViewAttendance from "./pages/dashboardPages/ViewAttendance";
+import MachInvent from "./pages/dashboardPages/MachInvent";
+import DailyExpenselog from "./pages/dashboardPages/DailyExpenselog";
+import DailyDispatch from "./pages/dashboardPages/DailyDispatch";
 
 function App() {
   return (
@@ -37,9 +37,8 @@ function App() {
         <Route path='/maintenance-schedule' element={<ScheduleMaintain/>} />
         <Route path='/manage-staff' element={<StaffManage/>} />
       </Route>
-
-      </Routes>
-  )
+    </Routes>
+  );
 }
 
-export default App
+export default App;
