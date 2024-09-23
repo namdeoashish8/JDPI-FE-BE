@@ -131,13 +131,13 @@ const Dashboard = () => {
                 <p>Lorem ipsum dolor sit amet.</p>
               </Box>
             </Link>
-            <Link to="/manage-staff" className="home-box-link">
-              <Box className="home-box">
-                <h2>
-                  Manage Staff <GroupsTwoToneIcon />
-                </h2>
-                <p>Update the employee/staff list</p>
-              </Box>
+            <Link to="/manage-staffs" className="home-box-link">
+            <Box className ="home-box">
+              <h2>
+              Manage Staff  <GroupsTwoToneIcon/>
+              </h2>
+              <p>Update the employee/staff list</p>
+            </Box>
             </Link>
           </div>
         </div>
