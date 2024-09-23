@@ -23,10 +23,7 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
         <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login/>} />
-        
         <Route path='/dashboard' element={<Dashboard/>} />
-
-
         <Route path='/mark-attendance' element={<MarkAttendance/>} />
         <Route path='/daily-dispatch' element={<DailyDispatch/>} />
         <Route path='/daily-expense' element={<DailyExpenselog/>} /> 

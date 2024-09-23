@@ -1,8 +1,9 @@
 const express = require('express')
-const { markAttendance } = require('../controllers/StaffController')
+const { markAttendance, getAttendanceForEmployee } = require('../controllers/StaffController')
 const router = express.Router()
 
 router.post('/mark-attendance', markAttendance)
+router.get('/view-attendance', getAttendanceForEmployee)
 
 
 module.exports = router

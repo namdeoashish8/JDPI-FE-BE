@@ -86,10 +86,15 @@ const fetchEmployee = async(req, res) =>{
           }
 }
 
+//Attendance Methods
 const markAttendance = async(req,res) =>{
     const {name, phone, date, checkInTime, checkOutTime, presentStatus, remarks} = req.body;
     const existingAttendance = await Attendance.findOne({ phone, date}); // Check if record for today exists
+    const existingEmployee = await Staff.findOne({phone}); // Check if record for employee exists
       
+    if(!existingEmployee){
+      return res.status(400).json({message: 'Employee does not exist'})
+    }else{
       if(existingAttendance){
         if(!VALID_PRESENTSTATUS.includes(presentStatus)){
             res.status(400).json({error: "Please select Present, Absent or On Leave"})
@@ -107,14 +112,15 @@ const markAttendance = async(req,res) =>{
             return Attendance.create({name, phone, date, checkInTime, checkOutTime, presentStatus, remarks});
       }
       res.status(200).json({ message: 'Attendance marked successfully' }); //marked or updated success msg
+    }
 }
 
 const getAttendanceForEmployee = async (req, res) => {
-    const { employeeId, startDate, endDate } = req.body;
+    const { phone, startDate, endDate } = req.body;
   
     try {
       const attendanceRecords = await Attendance.find({
-        employeeId,
+        phone,
         date: {
           $gte: new Date(startDate), // Greater than or equal to startDate
           $lte: new Date(endDate)    // Less than or equal to endDate
@@ -126,8 +132,7 @@ const getAttendanceForEmployee = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'Failed to retrieve attendance records' });
     }
-  };
-  
+}
 
 
 

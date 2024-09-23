@@ -3,7 +3,7 @@
 const AttendanceReport = () => {
   return (
     <div>
-      AttendanceReport
+      AttendanceReport - Yet to Arrive
     </div>
   )
 }
