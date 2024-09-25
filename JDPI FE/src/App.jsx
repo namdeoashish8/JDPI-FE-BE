@@ -35,7 +35,7 @@ function App() {
         <Route path='/attendance-reports' element={<AttendanceReport/>} />
         <Route path='/maintenance-log' element={<Maintenance/>} />
         <Route path='/maintenance-schedule' element={<ScheduleMaintain/>} />
-        <Route path='/manage-staff' element={<StaffManage/>} />
+        <Route path='/manage-staffs' element={<StaffManage/>} />
       </Route>
     </Routes>
   );

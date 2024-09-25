@@ -1,10 +1,11 @@
 import { Box, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -16,9 +17,11 @@ const MarkAttendance = () => {
   {
     /* name, phone, date, checkInTime, checkOutTime, presentStatus, remarks */
   }
+  
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState(dayjs()); // Initialize with current date
+  let dateVar = Date();
+  const [date, setDate] = useState(dayjs(dateVar)); // Initialize with current date
   const [checkInTime, setCheckInTime] = useState(dayjs()); // Initialize with current time
   const [checkOutTime, setCheckOutTime] = useState(dayjs());
   const [presentStatus, setpresentStatus] = useState("");
@@ -28,14 +31,13 @@ const MarkAttendance = () => {
     console.log(
       name,
       phone,
-      date.format('YYYY-MM-DD'),         // Format the date
-      checkInTime.format('HH:mm'),        // Format the check-in time
-      checkOutTime.format('HH:mm'),       // Format the check-out time  
+      date.format("YYYY-MM-DD"), // Format the date.format('YYYY-MM-DD')
+      checkInTime.format("HH:mm"), // Format the check-in time
+      checkOutTime.format("HH:mm"), // Format the check-out time
       presentStatus,
       remarks
     );
-    console.log(`API URL: ${import.meta.env.VITE_BASE_URL}`);
-    // console.log(`Base URL: ${import.meta.env.VITE_BASE_URL}`);
+
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/api/v1/attendance/mark-attendance`,
       {
@@ -46,9 +48,9 @@ const MarkAttendance = () => {
         body: JSON.stringify({
           name,
           phone,
-          date: date.format('YYYY-MM-DD'), 
-          checkInTime: checkInTime.format('HH:mm'),  // Format time properly
-          checkOutTime: checkOutTime.format('HH:mm'),
+          date: date.format("YYYY-MM-DD"),
+          checkInTime: checkInTime.format("HH:mm"), // Format time properly
+          checkOutTime: checkOutTime.format("HH:mm"),
           presentStatus,
           remarks,
         }),
@@ -56,10 +58,12 @@ const MarkAttendance = () => {
     );
 
     const data = await response.json();
-    if (response.status == 201) {
-      snackbar("success", `Attendance marked for the ${phone}`); //Appended phone number with use of ` `
+    console.log(data);
+    if (response.status == 200) {
+      snackbar("success", `For Employee ${data.message}`); //Appended phone number with use of ` `
       resetForm();
     } else {
+      console.log(data.error);
       snackbar("error", data.error);
     }
   };
@@ -67,9 +71,9 @@ const MarkAttendance = () => {
   const resetForm = () => {
     setName("");
     setPhone("");
-    setDate("");
-    setCheckInTime("");
-    setCheckOutTime("");
+    setDate(dayjs()); //this was the problem
+    setCheckInTime(dayjs()); //this was the problem
+    setCheckOutTime(dayjs());  //I was not resetting with correct format
     setpresentStatus("");
     setRemarks("");
   };
@@ -105,22 +109,28 @@ const MarkAttendance = () => {
           />
           <div className="custom-datetimepicker">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={["MobileDatePicker"]}>
+              <DemoContainer
+                components={[
+                  "DatePicker",
+                  "DesktopDatePicker",
+                ]}
+              >
                 <div className="custom-datepicker">
                   <DemoItem label="Date of presence/absence">
-                    <MobileDatePicker 
-                        defaultValue={dayjs("2022-04-17")} 
-                        value={date} 
-                        onChange={(newValue) => setDate(dayjs(newValue))}/>
+                    <DesktopDatePicker value={date} onChange={(newValue)=>setDate(newValue)}/>
                   </DemoItem>
                 </div>
                 <div className="custom-timepicker">
-                  <TimePicker label="check-In Time" 
-                    value={checkInTime} 
-                    onChange={(newValue) => setCheckInTime(dayjs(newValue))} />
-                  <TimePicker label="check-Out Time" 
-                    value={checkOutTime} 
-                    onChange={(newValue) => setCheckOutTime(dayjs(newValue))}/>
+                  <TimePicker
+                    label="check-In Time"
+                    value={checkInTime}
+                    onChange={(newValue) => setCheckInTime(dayjs(newValue))}
+                  />
+                  <TimePicker
+                    label="check-Out Time"
+                    value={checkOutTime}
+                    onChange={(newValue) => setCheckOutTime(dayjs(newValue))}
+                  />
                 </div>
               </DemoContainer>
             </LocalizationProvider>
@@ -152,7 +162,7 @@ const MarkAttendance = () => {
               type="String"
               sx={{ margin: "15px", width: "300px" }}
               value={remarks}
-              onChange={e => setRemarks(e.target.value)}
+              onChange={(e) => setRemarks(e.target.value)}
             />
           </div>
 
