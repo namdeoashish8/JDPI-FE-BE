@@ -2,6 +2,7 @@ import { Box, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import snackbar from '../utility/snackbar'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
       const [name, setName] = useState('');
@@ -9,6 +10,7 @@ const Signup = () => {
       const [phone, setPhone] = useState('');
       const [username, setusername] = useState('');
       const [password, setPwd] = useState('');
+      const navigate = useNavigate();
 
       const submit = async()=>{
         console.log(name, email, phone, username, password);  
@@ -27,6 +29,7 @@ const Signup = () => {
         if(response.status==201){
           snackbar('success', 'SignUp Successful');
           resetForm();
+          navigate("/login");// Navigate to the login after dashboard
         }
         else{
           snackbar('error', data.error);

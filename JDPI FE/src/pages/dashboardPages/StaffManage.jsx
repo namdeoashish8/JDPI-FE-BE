@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
 import {
@@ -122,15 +122,13 @@ const StaffManage = () => {
   };
 
   return (
-    <div>
+    <div >
       <div className="baskervville-sc-regular">
         <h2>Staff Management</h2>
       </div>
-
       <Button variant="outlined" onClick={handleClickOpen}>
         Add Employee
       </Button>
-
       {/* Dialog for adding employee */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Employee</DialogTitle>
@@ -193,7 +191,6 @@ const StaffManage = () => {
           <Button onClick={handleSubmit} variant="outlined" type="submit">Submit</Button>
         </DialogActions>
       </Dialog>
-
       {/* Table */}
       {loading ? (
         <p>Loading...</p>

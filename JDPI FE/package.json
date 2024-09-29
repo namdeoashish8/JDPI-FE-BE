@@ -10,20 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.15.20",
-    "@mui/material": "^5.15.20",
+    "@mui/material": "^5.16.7",
     "@mui/x-date-pickers": "^7.18.0",
     "axios": "^1.7.2",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "notistack": "^3.0.1",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "table": "^6.8.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

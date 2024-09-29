@@ -93,25 +93,29 @@ const markAttendance = async(req,res) =>{
     const existingEmployee = await Staff.findOne({phone}); // Check if record for employee exists
       
     if(!existingEmployee){
-      return res.status(400).json({message: 'Employee does not exist'})
+      return res.status(400).json({error: 'Employee does not exist'})
     }else{
       if(existingAttendance){
         if(!VALID_PRESENTSTATUS.includes(presentStatus)){
-            res.status(400).json({error: "Please select Present, Absent or On Leave"})
-            return;
+          return res.status(400).json({error: "Please select Present, Absent or On Leave"})
         }
-        return Attendance.updateOne(
+        else{
+         Attendance.updateOne(
             { phone: existingAttendance.phone }, //searching by id (should search by phone)
             { presentStatus, checkInTime, checkOutTime, remarks }
           );
-        } else {
-            if(!VALID_PRESENTSTATUS.includes(presentStatus)){
-                res.status(400).json({error: "Please select Present, Absent or On Leave"})
-                return;
-            }
-            return Attendance.create({name, phone, date, checkInTime, checkOutTime, presentStatus, remarks});
+          return res.status(200).json({ message: 'Attendance marked successfully' });
+        } 
       }
-      res.status(200).json({ message: 'Attendance marked successfully' }); //marked or updated success msg
+      else {
+            if(!VALID_PRESENTSTATUS.includes(presentStatus)){
+              return res.status(400).json({error: "Please select Present, Absent or On Leave"})
+            }
+            else{
+            Attendance.create({name, phone, date, checkInTime, checkOutTime, presentStatus, remarks});
+            return res.status(200).json({ message: 'Attendance marked successfully' });
+        }
+      }
     }
 }
 
@@ -127,7 +131,7 @@ const getAttendanceForEmployee = async (req, res) => {
         }
       });
   
-      res.status(200).json(attendanceRecords);
+      res.status(200).json({attendanceRecords, message: 'Attendance fetched successfully'});
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Failed to retrieve attendance records' });
