@@ -312,37 +312,53 @@ body {
   gap: 40px;
   
 }
-.emptable-container{
-  width: 70vw;
-}
+
 .buttons-container{
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 20vw;
   gap: 30px ;
+  
+ 
 }
 /*Decoration for tables */
+.emptable-container{
+  width: 70vw;
+  border: 1px solid black; 
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+/* Styling for the table */
 .table {
   width: 100%;
   border-collapse: collapse;
-  overflow-y: scroll;
+  border: 1px solid black; /* Outer border for the table */
+  table-layout: auto;
 }
 
-
 .table th, .table td {
-  border: 1px solid #ddd;
+  border: 1px solid black; /* Black borders for cells */
   padding: 8px;
   text-align: left;
 }
 
+/* Sticky header */
 .table thead {
-  background-color: #deeb6a;
+  background-color: #ecaaf1;
   position: sticky;
-  top: 0px;
-  margin: 0 0 0 0;
+  border: 1px solid black;
+  top: 0;
+  z-index: 1;
 }
 
+/* Responsive Scroll for small screens */
+@media (max-width: 600px) {
+  .table-container {
+    overflow-x: auto;
+  }
+}
 /* View Attendance css */
 .viewAttendance-container{
   min-height: 90vh;

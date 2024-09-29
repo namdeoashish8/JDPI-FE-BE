@@ -25,7 +25,7 @@ const addEmployee = async (req, res)=>{
         return;
     }
     if(!VALID_GENDER.includes(gender)){
-        res.status(400).json({error: "Please select Male or Female"})
+        res.status(400).json({error: "Please select correct gender"})
         return;
     }
     if(!VALID_STATUS.includes(status)){
