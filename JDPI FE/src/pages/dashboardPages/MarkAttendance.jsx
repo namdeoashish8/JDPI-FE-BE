@@ -1,7 +1,6 @@
 import { Box, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";

@@ -299,4 +299,47 @@ body {
   display: flex;
   flex-direction: column;/
 }
+/*styling for staff management page */
+.staff-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh; 
+}
+.manage-container{
+  padding-top: 30px;
+  display: flex;
+  gap: 40px;
+  
+}
+.emptable-container{
+  width: 70vw;
+}
+.buttons-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 20vw;
+  gap: 30px ;
+}
+/*Decoration for tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-y: scroll;
+}
+
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table thead {
+  background-color: #deeb6a;
+  position: sticky;
+  top: 0px;
+  margin: 0 0 0 0;
+}
 

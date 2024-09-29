@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
 import {
   Button,
   Dialog,
@@ -8,8 +10,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Stack,
   TextField,
 } from "@mui/material";
+
 
 const StaffManage = () => {
   const [staffData, setStaffData] = useState([]);
@@ -72,9 +76,13 @@ const StaffManage = () => {
     []
   );
 
-  const data = useMemo(() => (Array.isArray(staffData) ? staffData : []), [staffData]);
+  const data = useMemo(
+    () => (Array.isArray(staffData) ? staffData : []),
+    [staffData]
+  );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -122,123 +130,158 @@ const StaffManage = () => {
   };
 
   return (
-    <div>
-      <div className="baskervville-sc-regular">
-        <h2>Staff Management</h2>
+    <div className="staff-container">
+      <div className="header-container">
+        <h2 className="baskervville-sc-regular">Staff Management</h2>
       </div>
+      <div className="manage-container">
+        {/* Dialog for adding employee */}
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Add Employee</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please fill the employee details.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="name"
+              name="name"
+              label="Name"
+              value={newEmployee.name}
+              onChange={handleInputChange}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="phone"
+              name="phone"
+              label="Phone Number"
+              value={newEmployee.phone}
+              onChange={handleInputChange}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="role"
+              name="role"
+              label="Role"
+              value={newEmployee.role}
+              onChange={handleInputChange}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="status"
+              name="status"
+              label="Status"
+              value={newEmployee.status}
+              onChange={handleInputChange}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="gender"
+              name="gender"
+              label="Gender"
+              value={newEmployee.gender}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            {/* <Button onClick={handleClose} variant="outlined">
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit} variant="outlined" type="submit">
+              Submit
+            </Button> */}
+            <Stack direction="row" spacing={2}>
+              <Button
+                onClick={handleClose}
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleSubmit}
+                variant="contained"
+                endIcon={<SendIcon />}
+              >
+                Submit
+              </Button>
+            </Stack>
+          </DialogActions>
+        </Dialog>
 
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Add Employee
-      </Button>
+        {/* Table */}
 
-      {/* Dialog for adding employee */}
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Employee</DialogTitle>
-        <DialogContent>
-          <DialogContentText>Please fill the employee details.</DialogContentText>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="name"
-            name="name"
-            label="Name"
-            value={newEmployee.name}
-            onChange={handleInputChange}
-            fullWidth
-          />
-          <TextField
-            required
-            margin="dense"
-            id="phone"
-            name="phone"
-            label="Phone Number"
-            value={newEmployee.phone}
-            onChange={handleInputChange}
-            fullWidth
-          />
-          <TextField
-            required
-            margin="dense"
-            id="role"
-            name="role"
-            label="Role"
-            value={newEmployee.role}
-            onChange={handleInputChange}
-            fullWidth
-          />
-          <TextField
-            required
-            margin="dense"
-            id="status"
-            name="status"
-            label="Status"
-            value={newEmployee.status}
-            onChange={handleInputChange}
-            fullWidth
-          />
-          <TextField
-            required
-            margin="dense"
-            id="gender"
-            name="gender"
-            label="Gender"
-            value={newEmployee.gender}
-            onChange={handleInputChange}
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} variant="outlined">Cancel</Button>
-          <Button onClick={handleSubmit} variant="outlined" type="submit">Submit</Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Table */}
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <table
-          {...getTableProps()}
-          style={{ border: "1px solid black", margin: "auto", width: "80%" }}
-        >
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps()}
-                    key={column.id}
-                    style={{ border: "1px solid black", padding: "10px" }}
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <div className="emptable-container">
+           
+            <table className = "table"
+              {...getTableProps()}
+            >
+              <thead>
+                {headerGroups.map((headerGroup) => (
+                  <tr
+                    {...headerGroup.getHeaderGroupProps()}
+                    key={headerGroup.id}
                   >
-                    {column.render("Header")}
-                  </th>
+                    {headerGroup.headers.map((column) => (
+                      <th
+                        {...column.getHeaderProps()}
+                        key={column.id}
+                      >
+                        {column.render("Header")}
+                      </th>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()} key={row.id}>
-                  {row.cells.map((cell) => (
-                    <td
-                      {...cell.getCellProps()}
-                      key={cell.column.id}
-                      style={{ border: "1px solid black", padding: "10px" }}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      )}
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {rows.map((row) => {
+                  prepareRow(row);
+                  return (
+                    <tr {...row.getRowProps()} key={row.id}>
+                      {row.cells.map((cell) => (
+                        <td
+                          {...cell.getCellProps()}
+                          key={cell.column.id}
+                        >
+                          {cell.render("Cell")}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            
+          </div>
+        )}
+        <div className="buttons-container">
+          <Button variant="contained" color="success" size="medium" onClick={handleClickOpen}>
+            Add Employee
+          </Button>
+          <Button variant="contained" color="error" size="medium" >
+            Deactivate Employee
+          </Button>
+          <Button variant="contained"  color="secondary" size="medium" >
+            Update Employee
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
