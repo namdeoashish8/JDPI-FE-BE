@@ -60,7 +60,11 @@ const signUpUser = async (req, res)=>{
         res.status(401).json({error: "User could not be created"});
     }
 
+<<<<<<< HEAD
    // res.end('signup done on JDPI');
+=======
+    // res.end('signup done on JDPI');
+>>>>>>> e8cea0fec6486b0082c5db7c7f6556dfb273161b
 }
 
 const loginUser = async (req,res)=>{

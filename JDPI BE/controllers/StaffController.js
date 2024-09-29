@@ -131,7 +131,7 @@ const getAttendanceForEmployee = async (req, res) => {
         }
       });
   
-      res.status(200).json(attendanceRecords);
+      res.status(200).json({attendanceRecords, message: 'Attendance fetched successfully'});
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Failed to retrieve attendance records' });

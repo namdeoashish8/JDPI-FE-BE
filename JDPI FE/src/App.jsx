@@ -16,6 +16,7 @@ import ViewAttendance from "./pages/dashboardPages/ViewAttendance";
 import MachInvent from "./pages/dashboardPages/MachInvent";
 import DailyExpenselog from "./pages/dashboardPages/DailyExpenselog";
 import DailyDispatch from "./pages/dashboardPages/DailyDispatch";
+import VerifyLoginSignup from "./pages/VerifyLoginSignup";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/maintenance-log' element={<Maintenance/>} />
         <Route path='/maintenance-schedule' element={<ScheduleMaintain/>} />
         <Route path='/manage-staffs' element={<StaffManage/>} />
+        <Route path='/verify-loginSignup' element={<VerifyLoginSignup/>} />
       </Route>
     </Routes>
   );

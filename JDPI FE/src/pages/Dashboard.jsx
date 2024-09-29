@@ -13,25 +13,16 @@ import SoupKitchenRoundedIcon from "@mui/icons-material/SoupKitchenRounded";
 import EngineeringTwoToneIcon from "@mui/icons-material/EngineeringTwoTone";
 import ManageHistoryTwoToneIcon from "@mui/icons-material/ManageHistoryTwoTone";
 import GroupsTwoToneIcon from "@mui/icons-material/GroupsTwoTone";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div className="baskervville-sc-regular">
       {userInfo == undefined ? ( //using if else to show/hide login button
-        <div className=" logincheck-container">
-          <Link to="/login" className="home-box-link">
-            <Box className="loginCheck-box">
-              <h2>Please click here to login</h2>
-            </Box>
-          </Link>
-          <Link to="/signup" className="home-box-link">
-            <Box className="loginCheck-box">
-              <h2>Please click here to SignUp</h2>
-            </Box>
-          </Link>
-        </div>
+        navigate("/verify-loginSignup")// Navigate to the login after dashboard
       ) : (
         <div className="home-container">
           <h1 className="title">Dashboard</h1>

@@ -3,7 +3,7 @@ const { markAttendance, getAttendanceForEmployee } = require('../controllers/Sta
 const router = express.Router()
 
 router.post('/mark-attendance', markAttendance)
-router.get('/view-attendance', getAttendanceForEmployee)
+router.post('/view-attendance', getAttendanceForEmployee)
 
 
 module.exports = router
