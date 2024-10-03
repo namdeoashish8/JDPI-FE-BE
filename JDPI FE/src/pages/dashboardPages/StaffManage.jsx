@@ -23,12 +23,22 @@ const StaffManage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [updateOpen, setUpdateOpen] = useState(false);
+  const [deactivateOpen, setDeactivateOpen] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
     name: "",
     phone: "",
     role: "",
     status: "",
     gender: "",
+  });
+  const [updateEmployee, setUpdateEmployee] = useState({
+    name: "",
+    phone: "",
+    role: "",
+  });
+  const [deactivateEmp, setDeactivateEmp] = useState({
+    phone: "",
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -37,26 +47,36 @@ const StaffManage = () => {
     status: "",
     gender: "",
   });
+  //errrs during update
+  const [updateErrors, setUpdateErrors] = useState({
+    name: "",
+    phone: "",
+    role: "",
+  });
 
+  const [deactivateErrors, setDeactivateErrors] = useState({
+    phone: "",
+  });
   // Fetch data from the backend
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/staff/getEmployee`
-        );
-        if (response.status === 200 && response.data.employees) {
-          setStaffData(response.data.employees);
-        } else {
-          throw new Error("Invalid format of data from server");
-        }
-      } catch (error) {
-        console.error("Error in fetching staff data", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/staff/getEmployee`
+      );
+      if (response.status === 200 && response.data.employees) {
+        setStaffData(response.data.employees);
+      } else {
+        throw new Error("Invalid format of data from server");
       }
-    };
+    } catch (error) {
+      console.error("Error in fetching staff data", error);
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -97,6 +117,12 @@ const StaffManage = () => {
   const handleClickOpen = () => {
     setOpen(true);
   };
+  const handleClickUpdate = () => {
+    setUpdateOpen(true);
+  };
+  const handleClickDeactivate = () => {
+    setDeactivateOpen(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -117,11 +143,44 @@ const StaffManage = () => {
     });
   };
 
+  //to handle update close popup
+  const handleUpdateClose = () => {
+    setUpdateOpen(false);
+    //resetting the form
+    setUpdateEmployee({
+      name: "",
+      phone: "",
+      role: "",
+    });
+    setUpdateErrors({
+      name: "",
+      phone: "",
+      role: "",
+    });
+  };
+  const handleDeactivateClose = () => {
+    setDeactivateOpen(false);
+    //resetting the form
+    setDeactivateEmp({
+      phone: "",
+    });
+    setDeactivateErrors({
+      phone: "",
+    });
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewEmployee({ ...newEmployee, [name]: value });
   };
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateEmployee({ ...updateEmployee, [name]: value });
+  };
 
+  const handleDeactivateInputChange = (e) => {
+    const { name, value } = e.target;
+    setDeactivateEmp({ ...deactivateEmp, [name]: value });
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (
@@ -202,6 +261,131 @@ const StaffManage = () => {
     }
   };
 
+  const handleUpdateSubmit = async (event) => {
+    event.preventDefault();
+    if (!updateEmployee.name || !updateEmployee.phone || !updateEmployee.role) {
+      enqueueSnackbar("Please fill the details before submiting", {
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "right",
+        },
+        variant: "error",
+      });
+    }
+    try {
+      //Create backend for updateEmployee route
+      const response = await axios.put(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/staff/updateEmployee`,
+        updateEmployee
+      );
+      console.log(response.data);
+      if (response.status === 200) {
+        // Reset form fields and close the dialog after submission
+        setUpdateEmployee({
+          name: "",
+          phone: "",
+          role: "",
+        });
+        fetchData();
+        handleUpdateClose(); // Close the dialog after successful submission
+        enqueueSnackbar("Employee updated successfully", {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "success",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.data && error.response.data.error) {
+        const errorMessage = error.response.data.error;
+        if (errorMessage.includes("name")) {
+          setUpdateErrors((prev) => ({ ...prev, name: errorMessage }));
+        }
+        if (errorMessage.includes("phone")) {
+          setUpdateErrors((prev) => ({ ...prev, phone: errorMessage }));
+        }
+        if (errorMessage.includes("role")) {
+          setUpdateErrors((prev) => ({ ...prev, role: errorMessage }));
+        }
+        enqueueSnackbar(errorMessage, {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "error",
+        });
+      } else {
+        enqueueSnackbar("Error while updating employee", {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "error",
+        });
+      }
+    }
+  };
+
+  const handleDeactivateSubmit = async (event) => {
+    event.preventDefault();
+    if (!deactivateEmp.phone) {
+      enqueueSnackbar("Please fill the details before submiting", {
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "right",
+        },
+        variant: "error",
+      });
+    }
+    try {
+      //Create backend for updateEmployee route
+      const response = await axios.put(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/staff/deactivate`,
+        deactivateEmp
+      );
+      console.log(response.data);
+      if (response.status === 200) {
+        // Reset form fields and close the dialog after submission
+        setDeactivateEmp({
+          phone: "",
+        });
+        fetchData();
+        handleDeactivateClose(); // Close the dialog after successful submission
+        enqueueSnackbar("Employee deactivated successfully", {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "success",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.data && error.response.data.error) {
+        const errorMessage = error.response.data.error;
+        if (errorMessage.includes("phone")) {
+          deactivateErrors((prev) => ({ ...prev, phone: errorMessage }));
+        }
+        enqueueSnackbar(errorMessage, {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "error",
+        });
+      } else {
+        enqueueSnackbar("Error while deactivate employee", {
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "right",
+          },
+          variant: "error",
+        });
+      }
+    }
+  };
   return (
     <div className="staff-container">
       <div className="header-container">
@@ -319,6 +503,123 @@ const StaffManage = () => {
           </DialogActions>
         </Dialog>
 
+        {/* Dialogue box to update employee*/}
+        <Dialog open={updateOpen} onClose={handleUpdateClose}>
+          <DialogTitle>Update Employee details</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please update the employee details.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="name"
+              name="name"
+              label="Name"
+              value={updateEmployee.name}
+              onChange={handleUpdateInputChange}
+              error={!!updateErrors.name}
+              helperText={updateErrors.name}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="phone"
+              name="phone"
+              label="Phone Number"
+              value={updateEmployee.phone}
+              onChange={handleUpdateInputChange}
+              error={!!updateErrors.phone}
+              helperText={updateErrors.phone}
+              fullWidth
+            />
+            <InputLabel id="demo-simple-select-label">Select Role</InputLabel>
+            <Select
+              required
+              labelid="demo-simple-select"
+              margin="dense"
+              id="role"
+              name="role"
+              value={updateEmployee.role}
+              onChange={handleUpdateInputChange}
+              error={!!updateErrors.role}
+              fullWidth
+            >
+              <MenuItem value="">Select Role</MenuItem>
+              <MenuItem value="admin">Admin</MenuItem>
+              <MenuItem value="manager">Manager</MenuItem>
+              <MenuItem value="driver">Driver</MenuItem>
+              <MenuItem value="supervisor">Supervisor</MenuItem>
+              <MenuItem value="helper">Helper</MenuItem>
+              <MenuItem value="operator">Operator</MenuItem>
+              <MenuItem value="chef">Chef</MenuItem>
+              <MenuItem value="security">Security</MenuItem>
+            </Select>
+            {updateErrors.role && (
+              <p style={{ color: "red" }}>{updateErrors.role}</p>
+            )}
+          </DialogContent>
+          <DialogActions>
+            <Stack direction="row" spacing={2}>
+              <Button
+                onClick={handleUpdateClose}
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleUpdateSubmit}
+                variant="contained"
+                endIcon={<SendIcon />}
+              >
+                Submit
+              </Button>
+            </Stack>
+          </DialogActions>
+        </Dialog>
+
+        {/*Dialogue box to deactivate employee*/}
+        <Dialog open={deactivateOpen} onClose={handleDeactivateClose}>
+          <DialogTitle>Deactivate Employee</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please write phone number to deactivate an employee.
+            </DialogContentText>
+            <TextField
+              required
+              margin="dense"
+              id="phone"
+              name="phone"
+              label="Phone Number"
+              value={deactivateEmp.phone}
+              onChange={handleDeactivateInputChange}
+              error={!!deactivateErrors.phone}
+              helperText={deactivateErrors.phone}
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Stack direction="row" spacing={2}>
+              <Button
+                onClick={handleDeactivateClose}
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleDeactivateSubmit}
+                variant="contained"
+                endIcon={<SendIcon />}
+              >
+                Submit
+              </Button>
+            </Stack>
+          </DialogActions>
+        </Dialog>
         {/* Table */}
 
         {loading ? (
@@ -368,11 +669,21 @@ const StaffManage = () => {
           >
             Add Employee
           </Button>
-          <Button variant="contained" color="error" size="medium">
-            Deactivate Employee
-          </Button>
-          <Button variant="contained" color="secondary" size="medium">
+          <Button
+            variant="contained"
+            color="secondary"
+            size="medium"
+            onClick={handleClickUpdate}
+          >
             Update Employee
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            size="medium"
+            onClick={handleClickDeactivate}
+          >
+            Deactivate Employee
           </Button>
         </div>
       </div>
