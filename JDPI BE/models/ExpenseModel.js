@@ -15,8 +15,8 @@ const ExpenceSchema = new mongoose.Schema({
         required: true
     },
     boughtDate: {
-        type: String, // Store the time as a string
-        required: true
+        type: Date,
+        required:true
     },
     itemCategory: {
         type: String, // Store the time as a string

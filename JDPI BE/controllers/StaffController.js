@@ -1,5 +1,5 @@
 
-const Staff = require('../models/StaffModel')
+const Staff = require('../models/StaffModel') 
 const Attendance = require('../models/AttendanceModel')
 const VALID_ROLES = ['admin', 'manager', 'driver', 'supervisor', 'helper', 'operator', 'chef', 'security'];
 const VALID_GENDER = ['Male', 'Female'];

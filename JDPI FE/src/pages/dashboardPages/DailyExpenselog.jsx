@@ -130,7 +130,7 @@ const DailyExpenselog = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker", "DesktopDatePicker"]}>
                   <div>
-                    <DemoItem label="Date of presence/absence">
+                    <DemoItem label="Date of item purchase or Expense">
                       <DesktopDatePicker
                         value={boughtDate}
                         onChange={(newValue) => setBoughtDate(newValue)}
