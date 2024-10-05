@@ -27,7 +27,7 @@ const Navbar = () => {
             <>
               <p>Welcome {userInfo.name}</p>
               <Link to="/logout">Logout</Link>
-              <Link to="/myprofile">MyProfile</Link>
+              <Link to="/profile">MyProfile</Link>
             </>
             
           )}

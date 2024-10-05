@@ -2,8 +2,10 @@
 
 const AttendanceReport = () => {
   return (
-    <div>
-      AttendanceReport - Yet to Arrive
+    <div className="yetToArrive-container">
+      <div className="yetToArrive-subcontainer">
+        <h2>Attendance Reporting feature - Yet to Arrive !!</h2>
+      </div>
     </div>
   )
 }

@@ -17,6 +17,7 @@ import MachInvent from "./pages/dashboardPages/MachInvent";
 import DailyExpenselog from "./pages/dashboardPages/DailyExpenselog";
 import DailyDispatch from "./pages/dashboardPages/DailyDispatch";
 import VerifyLoginSignup from "./pages/VerifyLoginSignup";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
         <Route path='/signup' element={<Signup/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/mark-attendance' element={<MarkAttendance/>} />
         <Route path='/daily-dispatch' element={<DailyDispatch/>} />

@@ -33,7 +33,36 @@ const addExpense = async(req,res)=>{
 }
 
 const viewExpense = async (req,res) =>{
-
+    const { itemCategory, expenseStartDate, expenseEndDate } = req.body;
+  
+    //Validations
+    
+    if(!VALID_ITEMCATEGORY.includes(itemCategory)){
+        res.status(400).json({error: "Select the Category please"})
+        return;
+    }
+    if(!VALID_ITEMCATEGORY.includes(itemCategory)){
+        res.status(400).json({error: "Select the Category please"})
+        return;
+    }
+    if(!VALID_ITEMCATEGORY.includes(itemCategory)){
+        res.status(400).json({error: "Select the Category please"})
+        return;
+    }
+    try {
+      const expenseRecords = await Expense.find({
+        itemCategory,
+        boughtDate: {
+          $gte: new Date(expenseStartDate).toISOString(), // Greater than or equal to startDate
+          $lte: new Date(expenseEndDate).toISOString()    // Less than or equal to endDate
+        }
+      });
+  
+      res.status(200).json({expenseRecords, message: 'Expenses fetched successfully'});
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to retrieve expense records' });
+    }
 }
 
 module.exports = {addExpense, viewExpense}
