@@ -226,7 +226,7 @@ const ExpenseReport = () => {
           </div>
         ) : (
           <div className="attendanceTable">
-            <h2>Actual employee details to view attendance</h2>
+            <h2>Expenses are as below</h2>
             <table
               {...getTableProps()}
               style={{

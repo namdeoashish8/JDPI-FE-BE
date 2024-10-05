@@ -30,7 +30,7 @@ const Dashboard = () => {
             <Link to="/mark-attendance" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  <BackHandTwoToneIcon /> Mark Attendance
+                  <BackHandTwoToneIcon /> Add/Update Attendance
                 </h2>
                 <p>Employees can check in/out </p>
               </Box>
@@ -38,7 +38,7 @@ const Dashboard = () => {
             <Link to="/daily-dispatch" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  <AddToQueueTwoToneIcon /> Daily dispatch
+                  <AddToQueueTwoToneIcon /> Add Dispatch
                 </h2>
                 <p>
                   log daily dispatches of sand, their destinations, and
@@ -49,7 +49,7 @@ const Dashboard = () => {
             <Link to="/daily-expense" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  <CurrencyRupeeRoundedIcon /> Daily Expenses
+                  <CurrencyRupeeRoundedIcon /> Add Expenses
                 </h2>
                 <p>Fuel, kitchen supplies, employee benefits</p>
               </Box>
@@ -57,7 +57,7 @@ const Dashboard = () => {
             <Link to="/machine-inventory" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  <PrecisionManufacturingSharpIcon /> Machine & Parts Inventory
+                  <PrecisionManufacturingSharpIcon /> Add/Update Inventory
                 </h2>
                 <p>Machinery and spare parts</p>
               </Box>
@@ -75,7 +75,7 @@ const Dashboard = () => {
             <Link to="/sales-reports" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  Monthly Sales Reports <AssessmentSharpIcon />
+                  View Sales Reports <AssessmentSharpIcon />
                 </h2>
                 <p>Quantities, Destinations, and Revenue</p>
               </Box>
@@ -83,7 +83,7 @@ const Dashboard = () => {
             <Link to="/expense-reports" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  <AssessmentOutlinedIcon /> Expense Reports
+                  <AssessmentOutlinedIcon /> View Expense Reports
                 </h2>
                 <p>Reports based on daily, weekly, or monthly expenses</p>
               </Box>
@@ -91,7 +91,7 @@ const Dashboard = () => {
             <Link to="/kitchen-inventory" className="home-box-link">
               <Box className="home-box">
                 <h2>
-                  Kitchen Inventory <SoupKitchenRoundedIcon />
+                  View all Inventory <SoupKitchenRoundedIcon />
                 </h2>
                 <p>Track kitchen supplies</p>
               </Box>

@@ -140,6 +140,13 @@ body {
   flex-direction: column;
   padding-left: 70px;
 }
+.courouselImg{
+  max-width: 900px;   /* Set the maximum width */
+  max-height: 500px;  /* Set the maximum height */
+  width: auto;        /* Maintain aspect ratio */
+  height: auto;       /* Maintain aspect ratio */
+  display: block;
+}
 
 /* Flexbox container for the boxes */
 .box-container {
@@ -488,10 +495,44 @@ body {
 .dispatch-subcontainer{
   background-color: #fff;
   border-radius: 10px;
-  width: 1000px;
+  width: 900px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items:center;
+}
+.dispatchForm-Row{
+  display: flex;
+  gap: 15px;
 }
 
+/* Profile page styling */
+.profile-container{
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-Box{
+  margin-top: 30px;
+  background-color: #fff;
+  width: 700px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-Buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
 
 
 

@@ -61,7 +61,7 @@ const DailyExpenselog = () => {
     const data = await response.json();
     console.log(data);
     if (response.status == 200) {
-      snackbar("success", data.message); //Appended phone number with use of ` `
+      snackbar("success", data.message);
       resetForm();
     } else {
       console.log(data.error);
