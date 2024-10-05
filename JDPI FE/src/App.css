@@ -346,7 +346,8 @@ body {
 
 /* Sticky header */
 .table thead {
-  background-color: #ecaaf1;
+  background-color: var(--darkest-grey);
+  color: #ffffff;
   position: sticky;
   border: 1px solid black;
   top: 0;
