@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-container baskervville-sc-regular">
-        <Link to={"/dashboard"}>
+        <Link to={"/"}>
           <div className="nav-logocontain">
             <img src={logo} alt="JDPI" />
             <h1>JD PVS Infra-Resources</h1>

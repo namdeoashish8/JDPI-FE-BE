@@ -117,7 +117,7 @@ const DailyDispatch = () => {
           />
           <TextField
             id="standard-basic"
-            label="Quantity (in Tons)"
+            label="Quantity (in Sq.Ft)"
             variant="standard"
             type="Number"
             sx={{ width: "280px" }}
