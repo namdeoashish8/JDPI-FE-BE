@@ -4,6 +4,7 @@ import { useTable } from "react-table";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import { enqueueSnackbar } from "notistack";
+import snackbar from "../../utility/snackbar";
 import {
   Button,
   Dialog,
@@ -264,13 +265,7 @@ const StaffManage = () => {
   const handleUpdateSubmit = async (event) => {
     event.preventDefault();
     if (!updateEmployee.name || !updateEmployee.phone || !updateEmployee.role) {
-      enqueueSnackbar("Please fill the details before submiting", {
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "right",
-        },
-        variant: "error",
-      });
+      snackbar('error','Please fill the details before submiting')
     }
     try {
       //Create backend for updateEmployee route
@@ -288,13 +283,7 @@ const StaffManage = () => {
         });
         fetchData();
         handleUpdateClose(); // Close the dialog after successful submission
-        enqueueSnackbar("Employee updated successfully", {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "success",
-        });
+        snackbar('success','Employee updated successfully')
       }
     } catch (error) {
       console.log(error);
@@ -309,21 +298,9 @@ const StaffManage = () => {
         if (errorMessage.includes("role")) {
           setUpdateErrors((prev) => ({ ...prev, role: errorMessage }));
         }
-        enqueueSnackbar(errorMessage, {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "error",
-        });
+        enqueueSnackbar('error',errorMessage);
       } else {
-        enqueueSnackbar("Error while updating employee", {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "error",
-        });
+        enqueueSnackbar('error','Error while updating employee');
       }
     }
   };
@@ -331,13 +308,7 @@ const StaffManage = () => {
   const handleDeactivateSubmit = async (event) => {
     event.preventDefault();
     if (!deactivateEmp.phone) {
-      enqueueSnackbar("Please fill the details before submiting", {
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "right",
-        },
-        variant: "error",
-      });
+    snackbar('error','Please fill the details before submiting')
     }
     try {
       //Create backend for updateEmployee route
@@ -353,13 +324,7 @@ const StaffManage = () => {
         });
         fetchData();
         handleDeactivateClose(); // Close the dialog after successful submission
-        enqueueSnackbar("Employee deactivated successfully", {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "success",
-        });
+        snackbar('success',"Employee deactivated successfully")
       }
     } catch (error) {
       console.log(error);
@@ -368,21 +333,9 @@ const StaffManage = () => {
         if (errorMessage.includes("phone")) {
           deactivateErrors((prev) => ({ ...prev, phone: errorMessage }));
         }
-        enqueueSnackbar(errorMessage, {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "error",
-        });
+        snackbar('error',errorMessage);
       } else {
-        enqueueSnackbar("Error while deactivate employee", {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "error",
-        });
+        snackbar('error','Error while deactivate employee');
       }
     }
   };
