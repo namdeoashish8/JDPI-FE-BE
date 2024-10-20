@@ -1,6 +1,6 @@
 const Expense = require('../models/ExpenseModel')
 
-const VALID_ITEMCATEGORY = ['Machine Parts', 'Office', 'Stationary', 'Kitchen', 'Water', 'Fuel', 'others'];
+const VALID_ITEMCATEGORY = ['Machine Parts', 'Office', 'Stationary','Tools', 'Kitchen', 'Water', 'Fuel', 'others'];
 
 const addExpense = async(req,res)=>{
     const {itemName, itemPrice, itemQuantity, boughtDate, itemCategory, remarks } = req.body;

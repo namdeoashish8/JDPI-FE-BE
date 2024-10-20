@@ -13,7 +13,7 @@ import KitchenInvent from "./pages/dashboardPages/KitchenInvent";
 import ExpenseReport from "./pages/dashboardPages/ExpenseReport";
 import SalesReport from "./pages/dashboardPages/SalesReport";
 import ViewAttendance from "./pages/dashboardPages/ViewAttendance";
-import MachInvent from "./pages/dashboardPages/MachInvent";
+import AddInvent from "./pages/dashboardPages/AddInvent";
 import DailyExpenselog from "./pages/dashboardPages/DailyExpenselog";
 import DailyDispatch from "./pages/dashboardPages/DailyDispatch";
 import VerifyLoginSignup from "./pages/VerifyLoginSignup";
@@ -30,7 +30,7 @@ function App() {
         <Route path='/mark-attendance' element={<MarkAttendance/>} />
         <Route path='/daily-dispatch' element={<DailyDispatch/>} />
         <Route path='/daily-expense' element={<DailyExpenselog/>} /> 
-        <Route path='/machine-inventory' element={<MachInvent/>} />
+        <Route path='/machine-inventory' element={<AddInvent/>} />
         <Route path='/view-attendance' element={<ViewAttendance/>} />
         <Route path='/sales-reports' element={<SalesReport/>} />
         <Route path='expense-reports' element={<ExpenseReport/>} />
