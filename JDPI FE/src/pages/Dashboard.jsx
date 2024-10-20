@@ -14,16 +14,22 @@ import EngineeringTwoToneIcon from "@mui/icons-material/EngineeringTwoTone";
 import ManageHistoryTwoToneIcon from "@mui/icons-material/ManageHistoryTwoTone";
 import GroupsTwoToneIcon from "@mui/icons-material/GroupsTwoTone";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
 
+  // Use useEffect to handle navigation reliably
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/verify-loginSignup"); // Navigate if userInfo is undefined
+    }
+  }, [userInfo, navigate]);
+  if (!userInfo) return null; // Prevent rendering if not logged in
+
   return (
     <div className="baskervville-sc-regular">
-      {userInfo == undefined ? ( //using if else to show/hide login button
-        navigate("/verify-loginSignup")// Navigate to the login after dashboard
-      ) : (
         <div className="home-container">
           <h1 className="title">Dashboard</h1>
           <div className="box-container">
@@ -123,12 +129,12 @@ const Dashboard = () => {
               </Box>
             </Link>
             <Link to="/manage-staffs" className="home-box-link">
-            <Box className ="home-box">
-              <h2>
-              Manage Staff  <GroupsTwoToneIcon/>
-              </h2>
-              <p>Update the employee/staff list</p>
-            </Box>
+              <Box className="home-box">
+                <h2>
+                  Manage Staff <GroupsTwoToneIcon />
+                </h2>
+                <p>Update the employee/staff list</p>
+              </Box>
             </Link>
           </div>
         </div>

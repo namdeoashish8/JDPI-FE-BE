@@ -36,7 +36,7 @@ const Login = () => {
 
       snackbar("success", data.message);
       resetForm();
-      navigate("/dashboard");// Navigate to the dashboard after login
+      navigate("/");// Navigate to the dashboard after login
     } else {
       snackbar("error", data.error);
     }

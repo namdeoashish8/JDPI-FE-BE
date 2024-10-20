@@ -14,17 +14,26 @@
 }
 
 body {
-  background-color: #95cbeb;
+  background-color: #ffddd2;
+  /* background-color: #70f081; */
 }
 
 /* Navbar Styling */
 .nav-container{
   display: flex;
   justify-content: space-between;
+  /* margin-top: 10px; */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* border-radius: 35px; */
+  width: 100%;
+  z-index: 1000;
   align-items: center;
-  background-color: var(--dark-grey);
+  background-color: #006d77;
   padding: 0 10px 0 0;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .nav-logocontain{
@@ -37,7 +46,7 @@ body {
 }
 
 .nav-logocontain h1{
-  color: antiquewhite;
+  color: #edf6f9;
   /* font-style: italic; */
   font-size: 20px;
   font-weight: 550;
@@ -83,6 +92,7 @@ body {
 
  /* Yet to Arrive sections */
  .yetToArrive-container{
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   min-height: 70vh;
@@ -95,7 +105,8 @@ body {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  background-color: #fff;
+  background-color: #83c5be;
+  color: #006d77;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  }
@@ -113,6 +124,7 @@ body {
   border: 3px solid rgb(0, 0, 0);
   box-sizing: border-box;
   border-radius: 10px;
+  background-color: #83c5be;
 }
 
 /* login styling */
@@ -128,26 +140,142 @@ body {
   border: 3px solid rgb(255, 255, 255);
   box-sizing: border-box;
   border-radius: 10px;
-  background-color: var(--lightest-grey);
+  background-color: #83c5be;
 }
 
 /* Home Page styling */
-.home-container{
+
+.homepage-container{
+  margin-top: 110px;
   min-height: 100vh;
   display: flex;
+  gap: 20px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.home-section1{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.homeButtons-container{
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 30px;
+}
+.HomeButtons-Box{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.read-more{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #212529 ;
+  border-radius: 40px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
+
+}
+.corousel-container{
+  width: 65%;
+  height: auto;
+  border-radius: 10px; /* Rounded corners for a modern look */
+  padding: 5px;
+  overflow: hidden; /* Prevents overflow of content */
+  border-radius: 10px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+}
+
+/* Individual images in the slider */
+.courouselImg {
+  width: 100%; /* Make images responsive to fill the container */
+  height: auto; /*Maintain the image aspect ratio */
+  object-fit: cover; /* Ensures the image fills the container without stretching */
+  border-radius: 10px;
+}
+
+.aboutus-section{
+  width: 90%;
+  background-color: #edf6f9;
+  color: #03282c;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.4);
+}
+.products-section{
+  width: 90%;
+  height: 110vh;
+  background-color: #e29578;
+  color: #03282c;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+}
+.products-subsection{
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to next line */
+  justify-content: center; /* Centers cards horizontally */
+  gap: 20px;
+}
+.product-cards{
+  width: 500px;
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  background-color: #edf6f9;
+  align-items: center;
+  gap: 30px;
+  padding: 7px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.5);
+}
+.product-cards div{
+  display: flex;
+  flex-direction: column;
+  }
+.productImg{
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+}
+.contact-section{
+  width: 600px;
+  height: 200px;
+  background-color: #fff;
+  display: flex;
+  color: #03282c;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Dashboard styling */
+
+.home-container{
+  margin-top: 60px;
+  min-height: 100vh;
+  display: flex;
+  color: #03282c;
   gap: 20px;
   width: 90%;
   flex-direction: column;
   padding-left: 70px;
 }
-.courouselImg{
-  max-width: 900px;   /* Set the maximum width */
-  max-height: 500px;  /* Set the maximum height */
-  width: auto;        /* Maintain aspect ratio */
-  height: auto;       /* Maintain aspect ratio */
-  display: block;
-}
-
 /* Flexbox container for the boxes */
 .box-container {
   display: grid;
@@ -159,7 +287,7 @@ body {
 
 .home-box {
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   transition: transform 0.3s ease-in-out;
   text-align: center;
@@ -171,7 +299,7 @@ body {
 
 .title {
   font-size: 2.5rem;
-  color: #333;
+  color: #03282c;
   margin-bottom: 0px;
   text-align: center;
 }
@@ -182,7 +310,7 @@ body {
 
 .home-box h2 {
   font-size: 1.5rem;
-  color: #1a73e8;
+  color: #03282c;
   margin-bottom: -10px;
 }
 
@@ -198,17 +326,18 @@ body {
 
 /* Logged in check */
 .logincheck-container{
+  margin-top: 110px;
   min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
   margin: 30px;
-  color: #0657c2;
+  color: #00685d;
 }
 
 .loginCheck-box{
-  background-color: white;
+  background-color: #e29578;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   transition: transform 0.3s ease-in-out;
@@ -253,13 +382,14 @@ body {
   justify-content: center;
 } */
 .markAttendanceContainer {
+  margin-top: 60px;
   padding: 20px;/* Using your specified font-family */
   border-radius: 8px;
   display: flex;
   justify-content: center;
   gap: 35px;
   height: 90vh;
-  color: #00796b;
+  color: #006d77;
 }
 
 .singleAttendanceContainer {
@@ -269,22 +399,19 @@ body {
   width: fit-content;
   border-radius: 8px;
   margin-bottom: 30px;
-  box-shadow:  0 4px 8px  rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  box-shadow:  0 4px 12px  rgba(0, 0, 0, 0.5); /* Subtle shadow */
 }
 .singleAttendanceContainer h2{
   text-align: center;
   
 }
-
 .singleAttendanceBox {
   gap: 20px;
 }
-
 .custom-datetimepicker {
    display: flex;
    justify-content: space-between;
 }
-
 .custom-datepicker, .custom-timepicker {
   display: flex;
   flex-direction: column;
@@ -295,41 +422,39 @@ body {
 .custom-datepicker{
   padding-top: 13px;
 }
-
 .custom-timepicker {
   display: flex;
   gap: 15px; /* Space between Check-In and Check-Out TimePickers */
 }
-
 .timepicker .MuiFormControl-root {
   width: 150px; /* Customize the width of the time picker */
 }
-
 .multipleAttendanceContainer {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   height: 400px;
-  box-shadow:  0 4px 8px  rgba(0, 0, 0, 0.5);
+  box-shadow:  0 4px 12px  rgba(0, 0, 0, 0.5);
 }
-
 .multipleAttendanceContainer h2 {
   font-size: 1.5rem;
   font-weight: bold;
   color: #00796b;
   text-align: center;
 }
-
 .secondAttendanceBox{
   display: flex;
   flex-direction: column;/
 }
+
 /*styling for staff management page */
 .staff-container{
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80vh; 
+  color: #02353a;
 }
 .manage-container{
   padding-top: 30px;
@@ -337,7 +462,6 @@ body {
   gap: 40px;
   
 }
-
 .buttons-container{
   display: flex;
   justify-content: center;
@@ -354,7 +478,6 @@ body {
   max-height: 360px;
   overflow-y: auto;
 }
-
 /* Styling for the table */
 .table {
   width: 100%;
@@ -362,7 +485,6 @@ body {
   border: 1px solid black; /* Outer border for the table */
   table-layout: auto;
 }
-
 .table th, .table td {
   border: 1px solid black; /* Black borders for cells */
   padding: 8px;
@@ -378,20 +500,20 @@ body {
   top: 0;
   z-index: 1;
 }
-
 /* Responsive Scroll for small screens */
 @media (max-width: 600px) {
   .table-container {
     overflow-x: auto;
   }
 }
+
 /* View Attendance css */
 .viewAttendance-container{
+  margin-top: 65px;
   min-height: 90vh;
   display: flex;
+  color: #013035;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* gap: 50px; */
   align-items: center;
 
 }
@@ -408,8 +530,6 @@ body {
 .viewAttendanceForm-box h2{
   text-align: center;
 }
-
-
 .attendanceTable{
   width: 800px;
   background-color: #ffffff;
@@ -425,11 +545,13 @@ body {
 
 /* Expenses styling */
 .expenseform-container{
+  margin-top: 60px;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  color: #01353a;
 }
 .expenseform-container h2{
   text-decoration: underline;
@@ -441,7 +563,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #edf6f9;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -456,12 +578,13 @@ body {
   justify-content: baseline;
 }
 
+/* View Expense styling */
 .viewExpense-container{
+  margin-top: 60px;
+  color: #013d42;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* gap: 50px; */
   align-items: center;
 }
 .viewExpense-subcontainer{
@@ -483,8 +606,9 @@ body {
 }
 
 /* Dispatch Entry Styling */
-
 .dispatch-container{
+  margin-top: 60px;
+  color: #024046;
   display: flex;
   flex-direction: column;
   min-height: 80vh;
@@ -494,7 +618,7 @@ body {
   margin-bottom: 20px;
 }
 .dispatch-subcontainer{
-  background-color: #fff;
+  background-color: #edf6f9;
   border-radius: 10px;
   width: 900px;
   padding: 20px;
@@ -502,6 +626,7 @@ body {
   flex-direction: column;
   gap: 10px;
   align-items:center;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
 }
 .dispatchForm-Row{
   display: flex;
@@ -510,6 +635,7 @@ body {
 
 /* Profile page styling */
 .profile-container{
+  color: #006d77;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -518,7 +644,7 @@ body {
 }
 .profile-Box{
   margin-top: 30px;
-  background-color: #fff;
+  background-color: #edf6f9;
   width: 700px;
   padding: 25px;
   border-radius: 15px;

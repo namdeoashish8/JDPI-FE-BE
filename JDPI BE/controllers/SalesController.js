@@ -31,4 +31,30 @@ const addDispatch = async (req,res)=>{
     }
 }
 
-module.exports={addDispatch}
+const viewSales = async(req, res)=>{
+    const {salesStartDate, salesEndDate, minQuantity} = req.body;
+    const startOfDay = new Date(salesStartDate);
+    startOfDay.setHours(0, 0, 0, 0); // Start of the day
+
+    const endOfDay = new Date(salesEndDate);
+    endOfDay.setHours(23, 59, 59, 999); // End of the day
+
+    try {
+        const salesRecords = await Sales.find({
+            dispatchQuantity:{
+                $gte: parseInt(req.body.minQuantity, 10),
+            },
+            dispatchDate: {
+            $gte: startOfDay, // Greater than or equal to startDate
+            $lte: endOfDay    // Less than or equal to endDate
+          }
+        });
+    
+        res.status(200).json({salesRecords, message: 'Sales fetched successfully'});
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to retrieve sales records' });
+      }
+}
+
+module.exports={addDispatch, viewSales}

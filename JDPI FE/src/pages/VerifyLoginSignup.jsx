@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const VerifyLoginSignup = () => {
   return (
     <div>
-        <div className=" logincheck-container">
+        <div className=" logincheck-container baskervville-sc-regular">
           <Link to="/login" className="home-box-link">
             <Box className="loginCheck-box">
               <h2>Please click here to login</h2>
