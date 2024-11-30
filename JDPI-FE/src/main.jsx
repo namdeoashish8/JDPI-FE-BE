@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import { UserContextProvider } from "./context/UserContext.jsx";
+import 'antd/dist/antd.min.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
