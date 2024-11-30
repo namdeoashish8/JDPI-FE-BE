@@ -6,6 +6,7 @@ const staffRoutes = require('./routes/StaffRoutes')
 const attendanceRoutes = require('./routes/AttendanceRoutes')
 const expenseRoutes = require('./routes/ExpenseRoutes')
 const salesRoutes = require('./routes/SalesRoutes')
+const inventoryRoutes = require('./routes/InventoryRoutes')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
@@ -30,5 +31,6 @@ app.use('/api/v1/staff', staffRoutes);//Any api request for staff management wil
 app.use('/api/v1/attendance', attendanceRoutes);//Any api request for attendance will go to this file
 app.use('/api/v1/expenses', expenseRoutes);//Any api request for expense trackking and report will go to this file
 app.use('/api/v1/sales', salesRoutes);//Any api request for expense trackking and report will go to this file
+app.use('/api/v1/inventory',inventoryRoutes)
 
 app.listen(port, ()=> console.log(`App started on port ${port}`));

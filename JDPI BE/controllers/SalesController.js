@@ -25,7 +25,7 @@ const addDispatch = async (req,res)=>{
     //Saving the data in Cluster
     try {
         const dispatch = await Sales.create({dispatchItem, dispatchDate, slipNumber, dispatchQuantity, custName, dispatchVehicleNum});
-       res.status(200).json({dispatch, message: 'Dipatch added successfully'});
+        res.status(200).json({dispatch, message: 'Dipatch added successfully'});
     } catch (error) {
         res.status(401).json({error: "Dipatch could not be added"});
     }

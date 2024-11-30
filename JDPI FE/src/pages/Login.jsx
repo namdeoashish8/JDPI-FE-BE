@@ -12,9 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
 
-  const submit = async () => {
-    console.log(username, password);
-    
+  const submit = async () => {    
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/api/v1/auth/login`,
       {
