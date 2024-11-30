@@ -661,6 +661,35 @@ body {
   justify-content: space-around;
 }
 
+/*Css for add inventory page*/
+.inventory-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.inventory-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh; 
 
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px 20px;
+  transition: transform 0.2s;
+  width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.inventory-fields{
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
 

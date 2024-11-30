@@ -5,7 +5,7 @@ import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,7 +17,7 @@ const MarkAttendance = () => {
   {
     /* name, phone, date, checkInTime, checkOutTime, presentStatus, remarks */
   }
-  
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   let dateVar = Date();
@@ -73,7 +73,7 @@ const MarkAttendance = () => {
     setPhone("");
     setDate(dayjs()); //this was the problem
     setCheckInTime(dayjs()); //this was the problem
-    setCheckOutTime(dayjs());  //I was not resetting with correct format
+    setCheckOutTime(dayjs()); //I was not resetting with correct format
     setpresentStatus("");
     setRemarks("");
   };
@@ -109,15 +109,13 @@ const MarkAttendance = () => {
           />
           <div className="custom-datetimepicker">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer
-                components={[
-                  "DatePicker",
-                  "DesktopDatePicker",
-                ]}
-              >
+              <DemoContainer components={["DatePicker", "DesktopDatePicker"]}>
                 <div className="custom-datepicker">
                   <DemoItem label="Date of presence/absence">
-                    <DesktopDatePicker value={date} onChange={(newValue)=>setDate(newValue)}/>
+                    <DesktopDatePicker
+                      value={date}
+                      onChange={(newValue) => setDate(newValue)}
+                    />
                   </DemoItem>
                 </div>
                 <div className="custom-timepicker">
