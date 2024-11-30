@@ -4,5 +4,9 @@
     { "src": "./index.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/api/v1/auth" }  ]
+    { "src": "/(.*)", "dest": "/api/v1/auth" } ],
+  "headers": [ 
+    { "source": "/(.*)", 
+    "headers": [ { "key": "Content-Security-Policy", 
+    "value": "default-src 'none'; style-src 'self' 'https://cdn.jsdelivr.net';" } ] } ]
 }
