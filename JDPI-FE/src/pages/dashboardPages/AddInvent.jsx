@@ -14,6 +14,8 @@ const Inventory = () => {
     itemName: "",
     itemCategory: "",
     itemQuantity: "",
+    itemMeasurement:"",
+    inventoryAddDate:"",
     remarks: "",
   });
 
@@ -73,6 +75,24 @@ const Inventory = () => {
             name="itemQuantity"
             label="Item Quantity"
             value={inventory.itemQuantity}
+            onChange={handleInventoryData}
+          />
+          <TextField
+            id="itemMeasurement"
+            required
+            sx={{ width: "280px", marginBottom: "8px" }}
+            name="itemMeasurement"
+            label="Item Measurement"
+            value={inventory.itemMeasurement}
+            onChange={handleInventoryData}
+          />
+          <TextField
+            id="inventoryAddDate"
+            required
+            sx={{ width: "280px", marginBottom: "8px" }}
+            name="inventoryAddDate"
+            label="Item Add date"
+            value={inventory.inventoryAddDate}
             onChange={handleInventoryData}
           />
           <TextField

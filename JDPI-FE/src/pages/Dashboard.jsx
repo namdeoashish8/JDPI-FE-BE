@@ -65,7 +65,7 @@ const Dashboard = () => {
                 <h2>
                   <PrecisionManufacturingSharpIcon /> Add/Update Inventory
                 </h2>
-                <p>Machinery and spare parts</p>
+                <p>Machine and Kitchen spare parts</p>
               </Box>
             </Link>
           </div>
@@ -99,7 +99,7 @@ const Dashboard = () => {
                 <h2>
                   View all Inventory <SoupKitchenRoundedIcon />
                 </h2>
-                <p>Track kitchen supplies</p>
+                <p>Track all supplies</p>
               </Box>
             </Link>
           </div>
@@ -138,7 +138,6 @@ const Dashboard = () => {
             </Link>
           </div>
         </div>
-      )}
     </div>
   );
 };
