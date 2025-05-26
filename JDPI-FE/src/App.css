@@ -444,7 +444,7 @@ body {
 }
 .secondAttendanceBox{
   display: flex;
-  flex-direction: column;/
+  flex-direction: column;
 }
 
 /*styling for staff management page */
