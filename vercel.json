@@ -9,7 +9,7 @@
    {
       "src": "JDPI-FE/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "JDPI-FE/build" }
+      "config": { "distDir": "JDPI-FE/dist" }
     }
     
   ],
