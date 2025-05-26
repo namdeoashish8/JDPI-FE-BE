@@ -9,13 +9,13 @@
    {
       "src": "JDPI-FE/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "client/build" }
+      "config": { "distDir": "JDPI-FE/build" }
     }
     
   ],
   "routes": [
-    { "src": "/JDBI-BE/(.*)", "dest": "JDPI-BE/index.js" 
+    { "src": "/JDPI-BE/(.*)", "dest": "JDPI-BE/index.js" 
     }, 
-    { "src": "/(.*)", "dest": "client/build/$1"} 
+    { "src": "/(.*)", "dest": "JDPI-FE/build/index.html"}
   ]
 }

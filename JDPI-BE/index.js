@@ -33,6 +33,6 @@ app.use('/api/v1/expenses', expenseRoutes);//Any api request for expense trackki
 app.use('/api/v1/sales', salesRoutes);//Any api request for expense trackking and report will go to this file
 app.use('/api/v1/inventory',inventoryRoutes)
 
-app.listen(port, ()=> console.log(`App started on port ${port}`));
+// app.listen(port, ()=> console.log(`App started on port ${port}`));
 
 module.exports = app
