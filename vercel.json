@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "JDPI-BE/index.js",
+      "use": "@vercel/node"
+    }
+  ,
+   {
+      "src": "JDPI-FE/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "client/build" }
+    }
+    
+  ],
+  "routes": [
+    { "src": "/JDBI-BE/(.*)", "dest": "JDPI-BE/index.js" 
+    }, 
+    { "src": "/(.*)", "dest": "client/build/$1"} 
+  ]
+}
