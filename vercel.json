@@ -14,8 +14,8 @@
     
   ],
   "routes": [
-    { "src": "/JDPI-BE/(.*)", "dest": "JDPI-BE/index.js" 
-    }, 
-    { "src": "/(.*)", "dest": "JDPI-FE/build/index.html"}
+    { "src": "/JDPI-BE/(.*)", "dest": "JDPI-BE/index.js" }, 
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "JDPI-FE/dist/index.html"}
   ]
 }
